@@ -1,0 +1,18 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%
+
+ENV INITSYSTEM on
+
+RUN apt-get update && apt-get install -yq \
+    python3 \
+    python3-sense-hat \
+    python3-pip \
+    && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install paho-mqtt 
+
+COPY . /usr/src/app
+WORKDIR /usr/src/app
+
+# Finally, start our app
+CMD ["python3", "/usr/src/app/sense.py"]
