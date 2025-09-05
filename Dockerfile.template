@@ -15,4 +15,4 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 # Finally, start our app
-CMD ["python3", "/usr/src/app/sense.py"]
+CMD ["python3", "/usr/src/app/holocron.py"]
